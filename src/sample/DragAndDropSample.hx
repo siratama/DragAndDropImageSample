@@ -23,7 +23,7 @@ class DragAndDropSample
 	{
 		new JQuery(function(){ initialize(); });
 	}
-	public function initialize()
+	private function initialize()
 	{
 		dropZone = new DropZone();
 		imageFileReader = new ImageFileReader();
@@ -33,7 +33,7 @@ class DragAndDropSample
 		timer = new Timer(100);
 		timer.run = run;
 	}
-	public function run()
+	private function run()
 	{
 		mainFunction();
 	}
