@@ -115,14 +115,14 @@ sample.DragAndDropSample.prototype = {
 		this.dropZone = new sample.DropZone();
 		this.imageFileReader = new sample.ImageFileReader();
 		this.imageViewer = new sample.ImageViewer();
-		this.mainFunction = $bind(this,this.observeToDropZone);
+		this.mainFunction = $bind(this,this.observeDropZone);
 		this.timer = new haxe.Timer(100);
 		this.timer.run = $bind(this,this.run);
 	}
 	,run: function() {
 		this.mainFunction();
 	}
-	,observeToDropZone: function() {
+	,observeDropZone: function() {
 		var event = this.dropZone.getEvent();
 		switch(event[1]) {
 		case 0:
@@ -149,7 +149,7 @@ sample.DragAndDropSample.prototype = {
 		case 1:
 			var data = event[2];
 			this.imageViewer.show(data);
-			this.mainFunction = $bind(this,this.observeToDropZone);
+			this.mainFunction = $bind(this,this.observeDropZone);
 			break;
 		}
 	}

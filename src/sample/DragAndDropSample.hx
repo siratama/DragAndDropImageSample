@@ -29,7 +29,7 @@ class DragAndDropSample
 		imageFileReader = new ImageFileReader();
 		imageViewer = new ImageViewer();
 
-		mainFunction = observeToDropZone;
+		mainFunction = observeDropZone;
 		timer = new Timer(100);
 		timer.run = run;
 	}
@@ -37,7 +37,7 @@ class DragAndDropSample
 	{
 		mainFunction();
 	}
-	private function observeToDropZone()
+	private function observeDropZone()
 	{
 		var event = dropZone.getEvent();
 		switch(event){
@@ -61,7 +61,7 @@ class DragAndDropSample
 			case ImageFileReaderEvent.NONE: return;
 			case ImageFileReaderEvent.READ(data):
 				imageViewer.show(data);
-				mainFunction = observeToDropZone;
+				mainFunction = observeDropZone;
 		}
 	}
 }
