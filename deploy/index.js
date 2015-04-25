@@ -21,12 +21,7 @@ haxe.Timer = function(time_ms) {
 };
 haxe.Timer.__name__ = true;
 haxe.Timer.prototype = {
-	stop: function() {
-		if(this.id == null) return;
-		clearInterval(this.id);
-		this.id = null;
-	}
-	,run: function() {
+	run: function() {
 	}
 };
 var js = {};
@@ -120,14 +115,14 @@ sample.DragAndDropSample.prototype = {
 		this.dropZone = new sample.DropZone();
 		this.imageFileReader = new sample.ImageFileReader();
 		this.imageViewer = new sample.ImageViewer();
-		this.mainFunction = $bind(this,this.waitToDropImageFile);
+		this.mainFunction = $bind(this,this.observeToDropFile);
 		this.timer = new haxe.Timer(100);
 		this.timer.run = $bind(this,this.run);
 	}
 	,run: function() {
 		this.mainFunction();
 	}
-	,waitToDropImageFile: function() {
+	,observeToDropFile: function() {
 		var event = this.dropZone.getEvent();
 		switch(event[1]) {
 		case 0:
@@ -144,9 +139,9 @@ sample.DragAndDropSample.prototype = {
 	}
 	,initializeToReadImageFile: function(file) {
 		this.imageFileReader.start(file);
-		this.mainFunction = $bind(this,this.readImageFile);
+		this.mainFunction = $bind(this,this.observeToReadImageFile);
 	}
-	,readImageFile: function() {
+	,observeToReadImageFile: function() {
 		var event = this.imageFileReader.getEvent();
 		switch(event[1]) {
 		case 0:
@@ -154,12 +149,9 @@ sample.DragAndDropSample.prototype = {
 		case 1:
 			var data = event[2];
 			this.imageViewer.show(data);
-			this.mainFunction = $bind(this,this.waitToDropImageFile);
+			this.mainFunction = $bind(this,this.observeToDropFile);
 			break;
 		}
-	}
-	,finish: function() {
-		this.timer.stop();
 	}
 };
 sample.DropZoneEvent = { __ename__ : true, __constructs__ : ["NONE","DROP_FILE_ERROR","DROPPED"] };
