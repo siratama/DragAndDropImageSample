@@ -61,11 +61,7 @@ class DragAndDropSample
 			case ImageFileReaderEvent.NONE: return;
 			case ImageFileReaderEvent.READ(data):
 				imageViewer.show(data);
-				mainFunction = finish;
+				mainFunction = waitToDropImageFile;
 		}
-	}
-	private function finish()
-	{
-		timer.stop();
 	}
 }

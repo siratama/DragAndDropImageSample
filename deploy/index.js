@@ -154,7 +154,7 @@ sample.DragAndDropSample.prototype = {
 		case 1:
 			var data = event[2];
 			this.imageViewer.show(data);
-			this.mainFunction = $bind(this,this.finish);
+			this.mainFunction = $bind(this,this.waitToDropImageFile);
 			break;
 		}
 	}
@@ -234,5 +234,3 @@ String.__name__ = true;
 Array.__name__ = true;
 sample.DragAndDropSample.main();
 })();
-
-//# sourceMappingURL=index.js.map

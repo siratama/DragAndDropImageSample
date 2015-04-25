@@ -1,4 +1,4 @@
--js deploy/js/index.js
+-js deploy/index.js
 -main sample.DragAndDropSample
 -cp src
 -lib jQueryExtern
